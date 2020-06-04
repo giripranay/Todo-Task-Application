@@ -1,0 +1,146 @@
+#addButton {
+    border-radius: 25px;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 17px;
+
+}
+
+#addButton:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.button {
+    width: 100%;
+    height: 100%;
+    /* set a width so it doesnt change upon hover */
+    border: 0px solid #004B84;
+    
+     padding: 3px 21px; 
+    
+    /* -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px; */
+    color: black;
+    font-size: 16px;
+    font-family: Questrial;
+    text-decoration: none;
+    vertical-align: middle;
+    letter-spacing: 2px;
+}
+
+.button:hover span {
+    display: none
+}
+
+.button:hover:before {
+    content: "Move to In progress";
+}
+
+.button:hover {
+    background-color: skyblue;
+}
+
+.button2 {
+    width: 100%;
+    height: 100%;
+    /* set a width so it doesnt change upon hover */
+    border: 0px solid #004B84;
+    
+     padding: 3px 21px; 
+    
+    /* -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px; */
+    color: black;
+    font-size: 16px;
+    font-family: Questrial;
+    text-decoration: none;
+    vertical-align: middle;
+    letter-spacing: 2px;
+}
+
+.button2:hover span {
+    display: none
+}
+
+.button2:hover:before {
+    content: "Task Completed!";
+}
+
+.button2:hover {
+    background-color: green;
+}
+
+#tasks {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #tasks td, #tasks th {
+    border: 1px solid #ddd;
+    padding: 0px;
+  }
+  
+  #tasks tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #tasks tr:hover {background-color: #ddd;}
+  
+  #tasks th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(241, 111, 30);
+    color: white;
+  }
+  
+  #tasks #new th{
+    background-color: black;
+  }
+
+  #tasks #inProgress th{
+    background-color: skyblue;
+  }
+
+  #tasks #completed th{
+    background-color: green;
+  }
+
+  #tasks tr td select{
+      width: 100%;
+      border: none;
+      height: 30px;
+  }
+ 
+  .tooltip {
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  
+
+
+
+
+
