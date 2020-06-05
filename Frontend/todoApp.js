@@ -11,34 +11,55 @@ app.config(function($routeProvider,$locationProvider){
             .otherwise({redirectTo:'/'});
 });
 
-app.controller('taskController', function ($scope) {
+app.controller('taskController',['$scope','tasksFactory', function ($scope,tasksFactory) {
     $scope.taskArray = [];
-
+    function init(){
+        
+        tasksFactory.getTasks()
+            .then(function(tasks){
+                $scope.taskArray = tasks.data;
+            },function(err){
+                console.log(err);
+            });
+    }
+    init();
     $scope.add = function () {
         var date = new Date($scope.date);
-        $scope.taskArray.push({
+        var d=date.getDate();
+        var m=date.getMonth()+1;
+        var y=date.getYear()+1900;
+        date = ''.concat(y,'-',m,'-',d);
+
+        tasksFactory.postTasks({
             label:$scope.label,
             status: "new",
             task: $scope.task,
-            date: date.toDateString()
-        });
+            date: date
+        }).then(function(response){
+            $scope.taskArray = response.data;
+        },function(err){
+            console.log(err);
+        })
+       
         $scope.label="";
         $scope.task = "";
         $scope.date = "";
     };
 
-    $scope.update = function () {
-         var oldArray = $scope.taskArray;
-         $scope.taskArray = [];
-         angular.forEach(oldArray, function (entry) {
-            if (entry.status=='inProgess')
-                $scope.taslInProgress.push(entry);
+    $scope.update = function (entry) {
+        
 
-            else if(entry.status=='completed'){
-                $scope.taskCompleted.push(entry);
-            }
-
-        });
+        if(entry.status=='new'){
+            entry.status='inProgress'
+        }
+        else{
+            entry.status='completed'
+        }
+        tasksFactory.postTasks(entry).then(function(response){
+            $scope.taskArray = response.data;
+        },function(err){
+            console.log(err);
+        })
     };
 
-});
+}]);

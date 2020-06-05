@@ -11,70 +11,34 @@
     </select>
     <input type="text" ng-model="task" size="50" placeholder="Add New" required>
     <input type="date" ng-model="date" required>
-    <!-- <button id='addButton' ng-click="add()">+  New Task</button>  -->
     <input id='addButton' type="submit" value="Add new">
 </form>
 
-<!-- <h2>New Tasks</h2>
-<div ng-repeat="entry in taskArray | filter:entry.status='new'" >
-    <select ng-model="entry.status" />
-    <option value="new">New</option>
-    <option value="inProgress">In progress</option>
-    <option value="completed">Completed</option>
-    </select>
-    <button class='button'> <span ng-bind="entry.task"></span> </button> 
-    {{entry.date}}
-</div>
 
-<h2>In Progress Tasks</h2>
-<div ng-repeat="entry in taskArray | filter:entry.status='inProgress'" >
-    <input type="checkbox" ng-change="update()">
-    <select ng-model="entry.status" />
-    <option value="new">New</option>
-    <option value="inProgress">In progress</option>
-    <option value="completed">Completed</option>
-    </select>
-   <span ng-bind="entry.task"></span><span ng-bind="entry.date"></span>
-</div>
-
-<h2>Done Tasks</h2>
-<div ng-repeat="entry in taskArray | filter:entry.status='completed'" >
-    <span ng-bind="entry.status" />
-    <option value="new">New</option>
-    <option value="inProgress">In progress</option>
-    <option value="completed">Completed</option>
-    </span>
-   <span ng-bind="entry.task"></span><span ng-bind="entry.date"></span>
-</div> -->
 
 
 <h2>New Tasks</h2>
 <table id="tasks">
     <tr id="new">
         <th>Label</th>
-        <th>Status</th>
         <th>Task Description</th>
         <th>Deadline</th>
     </tr>
     <tr ng-repeat="entry in taskArray | filter:entry.status='new'"">
-                <td> <select ng-model=" entry.label">
+            <td> <select ng-model="entry.label">
         <option value="" disabled selected hidden>Select Label</option>
         <option value="personal">Personal</option>
         <option value="shopping">Shopping</option>
         <option value="work">Work</option>
         <option value="others">Others</option>
         </select></td>
-        <td><select ng-model=" entry.status">
-                <option value="new">New</option>
-                <option value="inProgress">In progress</option>
-                <option value="completed">Completed</option>
-            </select></td>
-        <td>  <div class="tooltip"><input type="checkbox"  ng-click="entry.status = 'completed'"/>
-            <span class="tooltiptext">Task Completed!</span>
-        </div>
-        <span ng-bind="entry.task"></span>   
+        <td>
+            <div class="tooltip"><input type="checkbox" ng-click="update(entry)" />
+                <span class="tooltiptext">Task Completed!</span>
+            </div>
+            <span ng-bind="entry.task"></span>
         </td>
-        <td> <button class='button' ng-click="entry.status = 'inProgress'"> <span ng-bind="entry.date"></span>
+        <td> <button class='button' ng-click="update(entry)"> <span ng-bind="entry.date"></span>
             </button></td>
     </tr>
 </table>
@@ -83,7 +47,6 @@
 <table id="tasks">
     <tr id="inProgress">
         <th>Label</th>
-        <th>Status</th>
         <th>Task Description</th>
         <th>Deadline</th>
     </tr>
@@ -95,13 +58,8 @@
         <option value="work">Work</option>
         <option value="others">Others</option>
         </select></td>
-        <td><select ng-model=" entry.status">
-                <option value="new">New</option>
-                <option value="inProgress">In progress</option>
-                <option value="completed">Completed</option>
-            </select></td>
         <td> <span ng-bind="entry.task"></span> </span></td>
-        <td> <button class='button2' ng-click="entry.status = 'completed'"> <span ng-bind="entry.date"></span></button>
+        <td> <button class='button2' ng-click="update(entry)"> <span ng-bind="entry.date"></span></button>
         </td>
     </tr>
 </table>
@@ -112,15 +70,12 @@
 <table id="tasks">
     <tr id='completed'>
         <th>Label</th>
-        <th>Status</th>
         <th>Task Description</th>
         <th>Deadline</th>
     </tr>
     <tr ng-repeat="entry in taskArray | filter:entry.status='completed'"">
-                <td> <span ng-bind=" entry.label"></span></td>
-        <td> <span ng-bind="entry.status"></span></td>
+        <td> <span ng-bind=" entry.label"></span></td>
         <td> <span ng-bind="entry.task"></span> </span></td>
         <td> <span ng-bind="entry.date"></span></td>
     </tr>
 </table>
-<input id="check" type="checkbox"  ng-click="entry.status = 'completed'"/>
