@@ -1,6 +1,8 @@
 # Todo-Task-Application
 A web application to manage your daily tasks.
 
+https://github.com/giripranay/Todo-Task-Application
+
 Technologies Involved:
                     Frontend:
                         HTML
