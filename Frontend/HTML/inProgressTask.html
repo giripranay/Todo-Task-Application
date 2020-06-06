@@ -1,0 +1,13 @@
+<h2 style="color: skyblue;">In Progress Tasks</h2>
+<table id="tasks">
+    <tr id='inProgress'>
+        <th>Label</th>
+        <th>Task Description</th>
+        <th>Deadline</th>
+    </tr>
+    <tr ng-repeat="entry in taskArray | filter:{status:'inProgress'}">
+        <td> <span ng-bind=" entry.label"></span></td>
+        <td> <span ng-bind="entry.task"></span> </span></td>
+        <td> <span ng-bind="entry.date"></span></td>
+    </tr>
+</table>

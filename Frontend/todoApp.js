@@ -8,11 +8,27 @@ app.config(function($routeProvider,$locationProvider){
                  templateUrl: 'task.html'
                 
             })
+            .when('/new',{
+                controller:'taskController',
+                templateUrl: 'HTML/newTask.html'
+               
+           })
+           .when('/inProgress',{
+            controller:'taskController',
+            templateUrl: 'HTML/inProgressTask.html'
+           
+           })
+            .when('/completed',{
+                controller:'taskController',
+                templateUrl: 'HTML/completedTask.html'
+               
+           })
             .otherwise({redirectTo:'/'});
-});
+});     
 
 app.controller('taskController',['$scope','tasksFactory', function ($scope,tasksFactory) {
     $scope.taskArray = [];
+    $scope.editEntry = {'task':"hello"}; 
     function init(){
         
         tasksFactory.getTasks()
@@ -24,7 +40,13 @@ app.controller('taskController',['$scope','tasksFactory', function ($scope,tasks
     }
     init();
     $scope.add = function () {
+        var datenow = new Date();
         var date = new Date($scope.date);
+        if(date<datenow){
+            $scope.date = "";
+            alert('PickUp Future Date');
+            return;
+        }
         var d=date.getDate();
         var m=date.getMonth()+1;
         var y=date.getYear()+1900;
@@ -46,15 +68,12 @@ app.controller('taskController',['$scope','tasksFactory', function ($scope,tasks
         $scope.date = "";
     };
 
-    $scope.update = function (entry) {
+    $scope.update = function (entry,status) {
         
 
-        if(entry.status=='new'){
-            entry.status='inProgress'
-        }
-        else{
-            entry.status='completed'
-        }
+        
+        entry.status=status
+        
         tasksFactory.postTasks(entry).then(function(response){
             $scope.taskArray = response.data;
         },function(err){
@@ -62,4 +81,8 @@ app.controller('taskController',['$scope','tasksFactory', function ($scope,tasks
         })
     };
 
+    $scope.edit = function (entry) {
+        $scope.editEntry ={'task':'asdfsdcfsad'};
+        
+    }
 }]);

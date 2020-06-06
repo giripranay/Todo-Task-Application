@@ -1,0 +1,18 @@
+<h2 style="color: green;">Completed Tasks</h2>
+<table id="tasks">
+    <tr id='completed'>
+        <th>Label</th>
+        <th>Task Description</th>
+        <th>Deadline</th>
+    </tr>
+    <tr ng-repeat="entry in taskArray | filter:{status:'completed'}">
+        <td> <span ng-bind=" entry.label"></span></td>
+        <td><select ng-model="entry.status" ng-change="update(entry,entry.status)">
+            <option value="new">New</option>
+            <option value="inProgress">In Progress</option>
+            <option value="completed">Completed</option>
+        </select></td>
+        <td> <span ng-bind="entry.task"></span> </span></td>
+        <td> <span ng-bind="entry.date"></span></td>
+    </tr>
+</table>

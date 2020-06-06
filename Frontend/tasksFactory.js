@@ -1,5 +1,5 @@
 angular.module('todoApp').factory('tasksFactory', function($http){
-    var tasks = $http.get('http://127.0.0.1:8083/');
+    var tasks = $http.get('http://127.0.0.1:8000/');
     
     var factory={};
     
@@ -8,7 +8,7 @@ angular.module('todoApp').factory('tasksFactory', function($http){
     }
 
     factory.postTasks = function(entry){
-        tasks = $http.post('http://127.0.0.1:8083/createTask',entry);
+        tasks = $http.post('http://127.0.0.1:8000/createTask',entry);
         return tasks;
     }
     return factory;
