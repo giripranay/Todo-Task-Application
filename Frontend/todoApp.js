@@ -5,7 +5,7 @@ app.config(function($routeProvider,$locationProvider){
     $routeProvider
             .when('/',{
                  controller:'taskController',
-                 templateUrl: 'task.html'
+                 templateUrl: 'HTML/task.html'
                 
             })
             .when('/new',{
