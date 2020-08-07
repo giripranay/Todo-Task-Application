@@ -14,7 +14,8 @@ Technologies Involved:
                         Django framework(Python)
                         Django Version 1.11.23
                         Python Version 2.7.16
-                        
+Frontend Deployed(Github pages):
+https://giripranay.github.io/Todo-Task-Application/Frontend
                         
 Deployment Instructions:
 
