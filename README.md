@@ -1,4 +1,5 @@
 # Todo-Task-Application
+(Python-django + AngularJS)
 A web application to manage your daily tasks.
 
 https://github.com/giripranay/Todo-Task-Application
